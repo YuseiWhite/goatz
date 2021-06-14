@@ -67,35 +67,37 @@ class HowToCountGame(object):
                 print(player1_name + ": " + "40\n" + player2_name + ": " + "40")
                 print("#######################################################")
 
-                dif = 0
-                while dif < 2:
+                while True:
+                    # difを絶対値2の差になったらbreakする。
                     get_point = int(input(which_point))
                     if get_point == 1:
                         player1_num += 1
-                        print(player1_num)
                         player1_points = "Ad"
                         player2_points = count_points[4]
-                        print(player1_points)
-                        print(player2_points)
                     elif get_point == 2:
                         player2_num += 1
-                        print(player2_num)
                         player1_points = count_points[4]
                         player2_points = "Ad"
-                        print(player1_points)
-                        print(player2_points)
                     elif get_point != 1 or get_point != 2 or get_point is not int:
                         print("1か2で入力して下さい")
 
+                    dif = abs(player1_num - player2_num)
                     if dif == 2 and player1_num > 5:
                         player1_points = count_points[5]
                         player2_points = count_points[4]
+                        print("#######################################################")
+                        print(player1_name + ": " + count_points[5] + "\n" + player2_name + ": " + count_points[4])
+                        print("\ngame " + player1_name)
+                        print("#######################################################")
                         break
                     elif dif == 2 and player2_num > 5:
                         player1_points = count_points[4]
                         player2_points = count_points[5]
+                        print("#######################################################")
+                        print(player1_name + ": " + count_points[4] + "\n" + player2_name + ": " + count_points[5])
+                        print("\ngame " + player2_name)
+                        print("#######################################################")
                         break
-
                     elif player1_num == player2_num:
                         player1_points = count_points[4]
                         player2_points = count_points[4]
@@ -106,18 +108,19 @@ class HowToCountGame(object):
                         player1_points = count_points[4]
                         player2_points = "Ad"
 
-                    dif = abs(player1_num - player2_num)
                     point_of_two_players = player1_name + ": " + player1_points + "\n" + player2_name + ": " + player2_points
                     print("#######################################################")
                     print(point_of_two_players)
                     print("#######################################################")
+            if player1_points == count_points[5] or player2_points == count_points[5]:
+                break
 
             # player1のポイント
-            elif player1_num % 5 == 0:
+            if player1_num % 5 == 0:
                 player1_points = count_points[5]
                 print("#######################################################")
                 print(player1_name + ": " + player1_points + "\n" + player2_name + ": " + player2_points)
-                print("\ngame" + player1_name)
+                print("\ngame " + player1_name)
                 print("#######################################################")
                 break
             elif player1_num % 4 == 0:
@@ -134,7 +137,7 @@ class HowToCountGame(object):
                 player2_points = count_points[5]
                 print("#######################################################")
                 print(player1_name + ": " + player1_points + "\n" + player2_name + ": " + player2_points)
-                print("\ngame" + player2_name)
+                print("\ngame " + player2_name)
                 print("#######################################################")
                 break
             elif player2_num % 4 == 0:
