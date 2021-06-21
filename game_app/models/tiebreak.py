@@ -5,7 +5,6 @@
 だだし、6-6になった場合は2ポイント差が着くまで永続的に続行する
 """
 from match import AboutPlayers
-about = AboutPlayers()
 
 
 class HowToCountTieBreak(object):
@@ -15,7 +14,7 @@ class HowToCountTieBreak(object):
 
     def tie_break(self):
         while True:
-            global about
+            about = AboutPlayers()
             get_point = int(input(about.which_point))
             if get_point == 1:
                 about.player1 += 1

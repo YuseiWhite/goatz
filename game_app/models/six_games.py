@@ -11,6 +11,17 @@ if文で
 数字 % 2 == 0
 数字 % 1 == 0
 
+gameは全て5の倍数になる
+つまり、プレイヤーのカウントが6ゲームまでで5, 10, 15, 20, 25, 30...となる。
+1ゲーム　＝　5
+→　数字 % 5 == 0
+2ゲーム　＝　10
+→　数字 % 5 == 5, 数字 % 10 == 0
+3ゲーム　＝　15
+...
+6ゲーム　＝　30
+
+
 5-5なら2点差着くまで
 このゲームを6つ先に取ったら勝利。
 
@@ -32,8 +43,8 @@ import pdb
 player1_name = "Aさん"
 player2_name = "Bさん"
 which_point = "1:" + player1_name + "がポイントを取った\n" + "2:" + player2_name + "がポイントを取った\n1か2で入力して下さい："
-player1_num = 1
-player2_num = 1
+player1_count_point = 1
+player2_count_point = 1
 win_player1 = "Game set and match won by " + player1_name + "."
 win_player2 = "Game set and match won by " + player2_name + "."
 count_points = {1: "0", 2: "15", 3: "30", 4: "40", 5: "game"}
@@ -47,8 +58,8 @@ class HowToCountGame(object):
 
     def game_count(self):
         while True:
-            global player1_num
-            global player2_num
+            global player1_count_point
+            global player2_count_point
             global which_point
             global count_points
             global player1_game_count
@@ -58,14 +69,14 @@ class HowToCountGame(object):
             player2_points = "0"
             get_point = int(input(which_point))
             if get_point == 1:
-                player1_num += 1
+                player1_count_point += 1
             elif get_point == 2:
-                player2_num += 1
+                player2_count_point += 1
             elif get_point != 1 or get_point != 2 or get_point is not int:
                 print("1か2で入力して下さい")
 
             # 40-40になった場合
-            if player1_num % 4 == 0 and player2_num % 4 == 0:
+            if player1_count_point % 4 == 0 and player2_count_point % 4 == 0:
                 print("#######################################################")
                 print(player1_name + ": " + "40\n" + player2_name + ": " + "40")
                 print("#######################################################")
@@ -73,46 +84,46 @@ class HowToCountGame(object):
                 while True:
                     get_point = int(input(which_point))
                     if get_point == 1:
-                        player1_num += 1
+                        player1_count_point += 1
                         player1_points = "Ad"
                         player2_points = count_points[4]
                     elif get_point == 2:
-                        player2_num += 1
+                        player2_count_point += 1
                         player1_points = count_points[4]
                         player2_points = "Ad"
                     elif get_point != 1 or get_point != 2 or get_point is not int:
                         print("1か2で入力して下さい")
 
-                    dif = abs(player1_num - player2_num)
-                    if dif == 2 and player1_num > 5:
+                    dif = abs(player1_count_point - player2_count_point)
+                    if dif == 2 and player1_count_point > 5:
                         player1_points = count_points[5]
                         player2_points = count_points[4]
-                        player1_num = 1
-                        player2_num = 1
+                        player1_count_point = 1
+                        player2_count_point = 1
                         player1_game_count += 1
                         print("#######################################################")
                         print(player1_name + ": " + count_points[5] + "\n" + player2_name + ": " + count_points[4])
                         print("\ngame " + player1_name)
                         print("#######################################################")
                         break
-                    elif dif == 2 and player2_num > 5:
+                    elif dif == 2 and player2_count_point > 5:
                         player1_points = count_points[4]
                         player2_points = count_points[5]
-                        player1_num = 1
-                        player2_num = 1
+                        player1_count_point = 1
+                        player2_count_point = 1
                         player2_game_count += 1
                         print("#######################################################")
                         print(player1_name + ": " + count_points[4] + "\n" + player2_name + ": " + count_points[5])
                         print("\ngame " + player2_name)
                         print("#######################################################")
                         break
-                    elif player1_num == player2_num:
+                    elif player1_count_point == player2_count_point:
                         player1_points = count_points[4]
                         player2_points = count_points[4]
-                    elif player1_num > player2_num:
+                    elif player1_count_point > player2_count_point:
                         player1_points = "Ad"
                         player2_points = count_points[4]
-                    elif player2_num > player1_num:
+                    elif player2_count_point > player1_count_point:
                         player1_points = count_points[4]
                         player2_points = "Ad"
 
@@ -125,43 +136,43 @@ class HowToCountGame(object):
                 break
 
             # player1のポイント
-            if player1_num % 5 == 0:
+            if player1_count_point % 5 == 0:
                 player1_points = count_points[5]
-                player1_num = 1
-                player2_num = 1
+                player1_count_point = 1
+                player2_count_point = 1
                 player1_game_count += 1
                 print("#######################################################")
                 print(player1_name + ": " + player1_points + "\n" + player2_name + ": " + player2_points)
                 print("\ngame " + player1_name)
                 print("#######################################################")
                 break
-            elif player1_num % 4 == 0:
+            elif player1_count_point % 4 == 0:
                 player1_points = count_points[4]
-            elif player1_num % 3 == 0:
+            elif player1_count_point % 3 == 0:
                 player1_points = count_points[3]
-            elif player1_num % 2 == 0:
+            elif player1_count_point % 2 == 0:
                 player1_points = count_points[2]
-            elif player1_num % 1 == 0:
+            elif player1_count_point % 1 == 0:
                 player1_points = count_points[1]
 
             # player2のポイント
-            if player2_num % 5 == 0:
+            if player2_count_point % 5 == 0:
                 player2_points = count_points[5]
-                player1_num = 1
-                player2_num = 1
+                player1_count_point = 1
+                player2_count_point = 1
                 player2_game_count += 1
                 print("#######################################################")
                 print(player1_name + ": " + player1_points + "\n" + player2_name + ": " + player2_points)
                 print("\ngame " + player2_name)
                 print("#######################################################")
                 break
-            elif player2_num % 4 == 0:
+            elif player2_count_point % 4 == 0:
                 player2_points = count_points[4]
-            elif player2_num % 3 == 0:
+            elif player2_count_point % 3 == 0:
                 player2_points = count_points[3]
-            elif player2_num % 2 == 0:
+            elif player2_count_point % 2 == 0:
                 player2_points = count_points[2]
-            elif player2_num % 1 == 0:
+            elif player2_count_point % 1 == 0:
                 player2_points = count_points[1]
 
             print("#######################################################")
@@ -170,5 +181,29 @@ class HowToCountGame(object):
             print("#######################################################")
 
 
-game = HowToCountGame()
-game.game_count()
+class SixGame(object):
+    def __init__(self, name="6ゲームマッチ"):
+        self.name = name
+
+    def six_games(self):
+        while True:
+            game = HowToCountGame()
+            game.game_count()
+            # player1
+            if player1_game_count % 6 == 0:
+                print("6 games")
+                break
+            elif player1_game_count % 5 == 0:
+                print("5 games")
+            elif player1_game_count % 4 == 0:
+                print("4 games")
+            elif player1_game_count % 3 == 0:
+                print("3 games")
+            elif player1_game_count % 2 == 0:
+                print("2 games")
+            elif player1_game_count % 1 == 0:
+                print("1 game")
+
+
+game_of_six_games = SixGame()
+game_of_six_games.six_games()
