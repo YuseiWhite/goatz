@@ -39,7 +39,6 @@ gameは全て5の倍数になる
 """
 import pdb
 
-
 player1_name = "Aさん"
 player2_name = "Bさん"
 which_point = "1:" + player1_name + "がポイントを取った\n" + "2:" + player2_name + "がポイントを取った\n1か2で入力して下さい："
@@ -189,20 +188,26 @@ class SixGame(object):
         while True:
             game = HowToCountGame()
             game.game_count()
-            # player1
-            if player1_game_count % 6 == 0:
-                print("6 games")
+            game_of_two_players = player1_name + ": " + str(player1_game_count) + "\n" \
+                                  + player2_name + ": " + str(player2_game_count)
+            # タイブレークの処理
+            if player1_game_count % 6 == 0 and player2_game_count % 6 == 0:
+                pass
+
+            elif player1_game_count % 6 == 0:
+                print("#######################################################")
+                print(game_of_two_players)
+                print("#######################################################")
                 break
-            elif player1_game_count % 5 == 0:
-                print("5 games")
-            elif player1_game_count % 4 == 0:
-                print("4 games")
-            elif player1_game_count % 3 == 0:
-                print("3 games")
-            elif player1_game_count % 2 == 0:
-                print("2 games")
-            elif player1_game_count % 1 == 0:
-                print("1 game")
+            elif player2_game_count % 6 == 0:
+                print("#######################################################")
+                print(game_of_two_players)
+                print("#######################################################")
+                break
+
+            print("#######################################################")
+            print(game_of_two_players)
+            print("#######################################################")
 
 
 game_of_six_games = SixGame()
