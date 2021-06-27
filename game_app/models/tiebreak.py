@@ -39,14 +39,16 @@ class SevenPointsTieBreak(HowToCountTieBreak):
         self.name = name
 
     def seven_points_tie_break(self):
-        how_to_count_tie_break = HowToCountTieBreak()
+        about = AboutPlayers()
         while True:
             dif = abs(about.player1 - about.player2)
             if dif == 2 and (about.player1 >= 8 or about.player2 >= 8):
                 break
             elif (about.player1 == 7 or about.player2 == 7) and (about.player1 < 6 or about.player2 < 6):
                 break
+            how_to_count_tie_break = HowToCountTieBreak()
             how_to_count_tie_break.tie_break()
+            return about.player1, about.player2
 
         if about.player1 > about.player2:
             print(about.win_player1)
