@@ -3,6 +3,19 @@ import pdb
 from match import AboutPlayers
 from tiebreak import SevenPointsTieBreak
 
+a = 0
+while True:
+    print(a)
+    a += 1
+    if a == 3:
+        print(12345)
+        a += 3
+        if a == 6:
+            print(67890)
+            break
+    print(a)
+
+
 player1_name = "Aさん"
 player2_name = "Bさん"
 which_point = "1:" + player1_name + "がポイントを取った\n" + "2:" + player2_name + "がポイントを取った\n1か2で入力して下さい："
@@ -149,39 +162,43 @@ class SixGame(HowToCountGame):
         self.name = name
 
     def six_games(self):
+        about = AboutPlayers()
         how_to_count_game = HowToCountGame()
+        tiebreak = SevenPointsTieBreak()
+        player1_win_tiebreak = None
+        player2_win_tiebreak = None
         while True:
             game_of_two_players = player1_name + ": " + str(player1_game_count) + "\n" + player2_name + ": " + str(player2_game_count)
             # タイブレークの処理
-            if (player1_game_count != 0 and player1_game_count % 5 == 0) and (player2_game_count != 0 and player2_game_count % 5 == 0):
+            if (player1_game_count != 0 and player2_game_count != 0) and (player1_game_count % 6 == 0 and player2_game_count % 6 == 0):
+                print("#######################################################")
+                print("6 game all, Tie-Break")
+                print("#######################################################")
+                tiebreak.seven_points_tie_break()
+                if player1_win_tiebreak == "win":
+                    print("#######################################################")
+                    print(player1_name + ": 7" + "\n" + player2_name + ": 6(" + str(about.player2) + ")")
+                    print("#######################################################")
+                    break
+                elif player2_win_tiebreak == "win":
+                    print("#######################################################")
+                    print(player2_name + ": 7" + "\n" + player1_name + ": 6(" + str(about.player1) + ")")
+                    print("#######################################################")
+                    break
+
+            elif (player1_game_count != 0 and player1_game_count % 5 == 0) and (player2_game_count != 0 and player2_game_count % 5 == 0):
+                pdb.set_trace()
                 while True:
-                    if player1_game_count % 6 == 0 and player2_game_count % 6 == 0:
-                        while True:
-                            pdb.set_trace()
-                            about = AboutPlayers()
-                            if about.player1 > about.player2:
-                                print("#######################################################")
-                                print(player1_name + ": 7" + "\n" + player2_name + ": 6(" + str(about.player2) + ")")
-                                print("#######################################################")
-                                break
-                            elif about.player2 > about.player1:
-                                print("#######################################################")
-                                print(player2_name + ": 7" + "\n" + player1_name + ": 6(" + str(about.player1) + ")")
-                                print("#######################################################")
-                                break
-                            tiebreak = SevenPointsTieBreak()
-                            tiebreak.seven_points_tie_break()
-                    elif player1_game_count == 7 or player2_game_count == 7:
+                    if player1_game_count == 7 or player2_game_count == 7:
                         print("#######################################################")
                         print(player1_name + ": " + str(player1_game_count) + "\n" + player2_name + ": " + str(player2_game_count))
                         print("#######################################################")
-                        break
+                        continue
                     print("#######################################################")
                     print(player1_name + ": " + str(player1_game_count) + "\n" + player2_name + ": " + str(player2_game_count))
                     print("#######################################################")
                     how_to_count_game.game_count()
-            if player1_game_count > 6 or player2_game_count > 6:
-                break
+
             # プレイヤー1とプレイヤー2の処理
             elif player1_game_count != 0 and player1_game_count % 6 == 0:
                 print("#######################################################")

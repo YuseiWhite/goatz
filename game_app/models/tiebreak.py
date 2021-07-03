@@ -5,6 +5,7 @@
 だだし、6-6になった場合は2ポイント差が着くまで永続的に続行する
 """
 from match import AboutPlayers
+import pdb
 
 
 class HowToCountTieBreak(object):
@@ -13,21 +14,14 @@ class HowToCountTieBreak(object):
         self.name = name
 
     def tie_break(self):
-        while True:
-            about = AboutPlayers()
-            get_point = int(input(about.which_point))
-            if get_point == 1:
-                about.player1 += 1
-            elif get_point == 2:
-                about.player2 += 1
-            elif get_point != 1 or get_point != 2 or get_point != int:
-                print("1か2で入力して下さい")
+        about = AboutPlayers()
 
-            point_of_two_players = about.player1_name + ": " + str(about.player1) + "\n" + about.player2_name + ": " + str(about.player2)
-            print("#######################################################")
-            print(point_of_two_players)
-            print("#######################################################")
-            return about.player1, about.player2
+        get_point = int(input(about.which_point))
+        if get_point == 1:
+            about.player1 += 1
+        elif get_point == 2:
+            about.player2 += 1
+        return about.player1
 
 
 class SevenPointsTieBreak(HowToCountTieBreak):
@@ -40,20 +34,29 @@ class SevenPointsTieBreak(HowToCountTieBreak):
 
     def seven_points_tie_break(self):
         about = AboutPlayers()
+        player1_win_tiebreak = None
+        player2_win_tiebreak = None
         while True:
+            get_point = int(input(about.which_point))
+            if get_point == 1:
+                about.player1 += 1
+            elif get_point == 2:
+                about.player2 += 1
+            point_of_two_players = about.player1_name + ": " + str(
+                about.player1) + "\n" + about.player2_name + ": " + str(about.player2)
+            print("#######################################################")
+            print(point_of_two_players)
+            print("#######################################################")
             dif = abs(about.player1 - about.player2)
             if dif == 2 and (about.player1 >= 8 or about.player2 >= 8):
                 break
             elif (about.player1 == 7 or about.player2 == 7) and (about.player1 < 6 or about.player2 < 6):
                 break
-            how_to_count_tie_break = HowToCountTieBreak()
-            how_to_count_tie_break.tie_break()
-            return about.player1, about.player2
-
         if about.player1 > about.player2:
-            print(about.win_player1)
+            player1_win_tiebreak = "win"
         elif about.player2 > about.player1:
-            print(about.win_player2)
+            player2_win_tiebreak = "win"
+        return about.player1, about.player2, player1_win_tiebreak, player2_win_tiebreak
 
 
 class TenPointsTieBreak(HowToCountTieBreak):
@@ -72,6 +75,10 @@ class TenPointsTieBreak(HowToCountTieBreak):
                 break
             elif (about.player1 == 10 or about.player2 == 10) and (about.player1 < 9 or about.player2 < 9):
                 break
+            point_of_two_players = about.player1_name + ": " + str(about.player1) + "\n" + about.player2_name + ": " + str(about.player2)
+            print("#######################################################")
+            print(point_of_two_players)
+            print("#######################################################")
             how_to_count_tie_break.tie_break()
 
         if about.player1 > about.player2:
