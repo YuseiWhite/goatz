@@ -21,7 +21,7 @@ class HowToCountTieBreak(object):
             about.player1 += 1
         elif get_point == 2:
             about.player2 += 1
-        return about.player1
+        return about.player1, about.player2
 
 
 class SevenPointsTieBreak(HowToCountTieBreak):
@@ -34,29 +34,29 @@ class SevenPointsTieBreak(HowToCountTieBreak):
 
     def seven_points_tie_break(self):
         about = AboutPlayers()
-        player1_win_tiebreak = None
-        player2_win_tiebreak = None
+        global PLAYER1_TIEBREAK_POINT
+        global PLAYER2_TIEBREAK_POINT
         while True:
             get_point = int(input(about.which_point))
             if get_point == 1:
                 about.player1 += 1
             elif get_point == 2:
                 about.player2 += 1
-            point_of_two_players = about.player1_name + ": " + str(
-                about.player1) + "\n" + about.player2_name + ": " + str(about.player2)
+
+            point_of_two_players = about.player1_name + ": " + str(about.player1) + "\n" + about.player2_name + ": " + str(about.player2)
             print("#######################################################")
             print(point_of_two_players)
             print("#######################################################")
+
             dif = abs(about.player1 - about.player2)
             if dif == 2 and (about.player1 >= 8 or about.player2 >= 8):
-                break
+                PLAYER1_TIEBREAK_POINT = about.player1
+                PLAYER2_TIEBREAK_POINT = about.player2
+                return PLAYER1_TIEBREAK_POINT, PLAYER2_TIEBREAK_POINT
             elif (about.player1 == 7 or about.player2 == 7) and (about.player1 < 6 or about.player2 < 6):
-                break
-        if about.player1 > about.player2:
-            player1_win_tiebreak = "win"
-        elif about.player2 > about.player1:
-            player2_win_tiebreak = "win"
-        return about.player1, about.player2, player1_win_tiebreak, player2_win_tiebreak
+                PLAYER1_TIEBREAK_POINT = about.player1
+                PLAYER2_TIEBREAK_POINT = about.player2
+                return PLAYER1_TIEBREAK_POINT, PLAYER2_TIEBREAK_POINT
 
 
 class TenPointsTieBreak(HowToCountTieBreak):
@@ -85,4 +85,3 @@ class TenPointsTieBreak(HowToCountTieBreak):
             print(about.win_player1)
         elif about.player2 > about.player1:
             print(about.win_player2)
-
