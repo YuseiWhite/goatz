@@ -34,8 +34,6 @@ class SevenPointsTieBreak(HowToCountTieBreak):
 
     def seven_points_tie_break(self):
         about = AboutPlayers()
-        global PLAYER1_TIEBREAK_POINT
-        global PLAYER2_TIEBREAK_POINT
         while True:
             get_point = int(input(about.which_point))
             if get_point == 1:
@@ -50,13 +48,13 @@ class SevenPointsTieBreak(HowToCountTieBreak):
 
             dif = abs(about.player1 - about.player2)
             if dif == 2 and (about.player1 >= 8 or about.player2 >= 8):
-                PLAYER1_TIEBREAK_POINT = about.player1
-                PLAYER2_TIEBREAK_POINT = about.player2
-                return PLAYER1_TIEBREAK_POINT, PLAYER2_TIEBREAK_POINT
+                player1_tiebreak_point = about.player1
+                player2_tiebreak_point = about.player2
+                return player1_tiebreak_point, player2_tiebreak_point
             elif (about.player1 == 7 or about.player2 == 7) and (about.player1 < 6 or about.player2 < 6):
-                PLAYER1_TIEBREAK_POINT = about.player1
-                PLAYER2_TIEBREAK_POINT = about.player2
-                return PLAYER1_TIEBREAK_POINT, PLAYER2_TIEBREAK_POINT
+                player1_tiebreak_point = about.player1
+                player2_tiebreak_point = about.player2
+                return player1_tiebreak_point, player2_tiebreak_point
 
 
 class TenPointsTieBreak(HowToCountTieBreak):

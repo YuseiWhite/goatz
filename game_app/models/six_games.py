@@ -153,32 +153,28 @@ class SixGame(HowToCountGame):
         about = AboutPlayers()
         how_to_count_game = HowToCountGame()
         tiebreak = SevenPointsTieBreak()
+        player1_tiebreak_point = 0
+        player2_tiebreak_point = 0
+        separation = "#######################################################"
         while True:
             game_of_two_players = player1_name + ": " + str(player1_game_count) + "\n" + player2_name + ": " + str(player2_game_count)
-
             # 5-5になったら
             if (player1_game_count != 0 and player1_game_count % 5 == 0) and (player2_game_count != 0 and player2_game_count % 5 == 0):
                 while True:
                     if player1_game_count == 6 and player2_game_count == 6:
-                        # タイブレーク
-                        print("#######################################################")
-                        print("6 game all, Tie-Break")
-                        print("#######################################################")
-                        tiebreak.seven_points_tie_break()
-
-                    elif player1_game_count == 7 or player2_game_count == 7:
-                        print("#######################################################")
-                        print(player1_name + ": " + str(player1_game_count) + "\n" + player2_name + ": " + str(player2_game_count))
-                        print("#######################################################")
+                        print("\n6 game all, Tie-Break\n")
+                        player1_tiebreak_point, player2_tiebreak_point = tiebreak.seven_points_tie_break()
                         break
-                    # タイブレークが終わった時には処理されない
-                    print("#######################################################")
-                    print(player1_name + ": " + str(player1_game_count) + "\n" + player2_name + ": " + str(player2_game_count))
-                    print("#######################################################")
+                    elif player1_game_count == 7 or player2_game_count == 7:
+                        print(separation + "\n" + player1_name + ": " + str(player1_game_count) + "\n"
+                              + player2_name + ": " + str(player2_game_count) + "\n" + separation)
+                        break
+                    print(separation + "\n" + player1_name + ": " + str(player1_game_count) + "\n"
+                          + player2_name + ": " + str(player2_game_count) + "\n" + separation)
                     how_to_count_game.game_count()
 
             # プレイヤー1とプレイヤー2の処理
-            elif player1_game_count != 0 and player1_game_count % 6 == 0:
+            if player1_game_count != 0 and player1_game_count % 6 == 0:
                 print("#######################################################")
                 print(game_of_two_players)
                 print("#######################################################")
@@ -189,22 +185,21 @@ class SixGame(HowToCountGame):
                 print("#######################################################")
                 break
 
-            # タイブレークの結果出力
-            # if PLAYER1_TIEBREAK_POINT > PLAYER2_TIEBREAK_POINT:
-            #     print("#######################################################")
-            #     print(player1_name + ": 7" + "\n" + player2_name + ": 6(" + str(player2_tiebreak_point) + ")")
-            #     print("#######################################################")
-            #     break
-            # elif PLAYER2_TIEBREAK_POINT > PLAYER1_TIEBREAK_POINT:
-            #     print("#######################################################")
-            #     print(player1_name + ": 6(" + str(player1_tiebreak_point) + ")\n" + player2_name + ": 7")
-            #     print("#######################################################")
-            #     break
-
             print("#######################################################")
             print(game_of_two_players)
             print("#######################################################")
             how_to_count_game.game_count()
+
+        if player1_tiebreak_point > player2_tiebreak_point:
+            print("#######################################################")
+            print(about.win_player1)
+            print(player1_name + ": 7" + "\n" + player2_name + ": 6(" + str(player2_tiebreak_point) + ")")
+            print("#######################################################")
+        elif player2_tiebreak_point > player1_tiebreak_point:
+            print("#######################################################")
+            print(about.win_player2)
+            print(player1_name + ": 6(" + str(player1_tiebreak_point) + ")\n" + player2_name + ": 7")
+            print("#######################################################")
 
 
 g = SixGame()
