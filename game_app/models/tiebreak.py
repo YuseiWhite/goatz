@@ -5,7 +5,6 @@
 だだし、6-6になった場合は2ポイント差が着くまで永続的に続行する
 """
 from match import AboutPlayers
-import pdb
 
 
 class HowToCountTieBreak(object):
