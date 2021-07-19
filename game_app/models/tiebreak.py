@@ -72,13 +72,13 @@ class TenPointsTieBreak(HowToCountTieBreak):
                 break
             elif (about.player1 == 10 or about.player2 == 10) and (about.player1 < 9 or about.player2 < 9):
                 break
-            point_of_two_players = about.about_player1_name + ": " + str(about.player1) + "\n" + about.about_player2_name + ": " + str(about.player2)
+            point_of_two_players = about.player1_name + ": " + str(about.player1) + "\n" + about.player2_name + ": " + str(about.player2)
             print("#######################################################")
             print(point_of_two_players)
             print("#######################################################")
             how_to_count_tie_break.tie_break()
 
         if about.player1 > about.player2:
-            print(about.about_win_player1)
+            print(about.win_player1)
         elif about.player2 > about.player1:
-            print(about.about_win_player2)
+            print(about.win_player2)
