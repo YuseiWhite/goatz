@@ -1,7 +1,4 @@
-from match import AboutPlayers
 from tiebreak import SevenPointsTieBreak
-
-import pdb
 
 
 class HowToCountGame(object):
@@ -138,7 +135,7 @@ class SixGame(HowToCountGame):
         super().__init__(name)
         self.name = name
 
-    def six_games(self):
+    def six_games_match(self):
         how_to_count_game = HowToCountGame()
         player1_game_count = 0
         player2_game_count = 0
