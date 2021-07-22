@@ -1,7 +1,4 @@
-from match import AboutPlayers
 from tiebreak import SevenPointsTieBreak
-
-import pdb
 
 
 class HowToCountGame(object):
