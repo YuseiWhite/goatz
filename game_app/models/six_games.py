@@ -3,33 +3,6 @@ from tiebreak import SevenPointsTieBreak
 
 import pdb
 
-# 練習用　tennis_count_appには関係ありません
-# class TokutenData(object):
-#     def __init__(self):
-#         self.name = ''
-#         self.kokugo = 0
-#         self.sansuu = 0
-#         self.heikin = 0.0
-#
-#     def heikin_cal(self):
-#         self.heikin = (self.kokugo + self.sansuu) / 2
-#
-#
-# class TaroData(object):
-#     def __init__(self):
-#         pass
-#
-#     def __taro__(self):
-#         taro = TokutenData()
-#         taro.name = '太郎'  # nameに'太郎'を代入
-#         taro.kokugo = 50  # kokugoに50を代入
-#         taro.sansuu = 45  # sansuuに45を代入
-#         taro.heikin_cal()
-#         print(taro.name, 'の平均点：', taro.heikin)
-#
-# data = TaroData()
-# data.__taro__()
-
 
 class HowToCountGame(object):
     def __init__(self, name="ゲームマッチ"):
@@ -39,67 +12,25 @@ class HowToCountGame(object):
         self.win_player1 = "Game set and match won by " + self.player1_name + "."
         self.win_player2 = "Game set and match won by " + self.player2_name + "."
 
-    def fourty_all(self):
-        about = AboutPlayers()
-        player1_points = "0"
-        player2_points = "0"
+    def game_count(self):
+        how_to_game_count = HowToCountGame()
+        which_point = "1:" + how_to_game_count.player1_name + "がポイントを取った\n" + "2:" + how_to_game_count.player2_name + "がポイントを取った\n1か2で入力して下さい："
         separation = "#######################################################"
-        player1_count = about.player1_count
-        player2_count = about.player2_count
+        player1_count = 1
+        player2_count = 1
+        players_count = {1: "0", 2: "15", 3: "30", 4: "40", 5: "game"}
+        player1_game_count = 0
+        player2_game_count = 0
 
-        print(separation + "\n" + about.player1_name + ": " + "40\n"
-              + about.player2_name + ": " + "40\n" + separation)
-        while True:
-            str_get_point = input(about.which_point)
-            if str_get_point is not None:
+        def which_get_point(player1_count, player2_count):
+            str_get_point = input(which_point)
+            if str_get_point == "1" or str_get_point == "2":
                 get_point = int(str_get_point)
                 if get_point == 1:
                     player1_count += 1
                 elif get_point == 2:
                     player2_count += 1
-
-            dif = abs(player1_count - player2_count)
-            if dif == 2 and player1_count > player2_count:
-                player1_points = about.players_count[5]
-                player2_points = about.players_count[4]
-                player1_count = 1
-                player2_count = 1
-                about.player1_game_count += 1
-                print(separation + "\n" + about.player1_name + ": " + player1_points + "\n"
-                      + about.player2_name + ": " + player2_points + "\n" + about.win_player1 + "\n" + separation)
-                return about.player1_game_count, about.player2_game_count
-            elif dif == 2 and player1_count < player2_count:
-                player1_points = about.players_count[4]
-                player2_points = about.players_count[5]
-                player1_count = 1
-                player2_count = 1
-                about.player2_game_count += 1
-                print(separation + "\n" + about.player1_name + ": " + player1_points + "\n"
-                      + about.player2_name + ": " + player2_points + "\n" + about.win_player2 + "\n" + separation)
-                return about.player1_game_count, about.player2_game_count
-            elif player1_count == player2_count:
-                player1_points = about.players_count[4]
-                player2_points = about.players_count[4]
-            elif player1_count > player2_count:
-                player1_points = "Ad"
-                player2_points = about.players_count[4]
-            elif player2_count > player1_count:
-                player1_points = about.players_count[4]
-                player2_points = "Ad"
-
-            point_of_two_players = about.player1_name + ": " + player1_points + "\n" + about.player2_name + ": " + player2_points
-            print(separation + "\n" + point_of_two_players + "\n" + separation)
-
-    def game_count(self):
-        how_to_game_count = HowToCountGame()
-        which_point = "1:" + how_to_game_count.player1_name + "がポイントを取った\n" + "2:" + how_to_game_count.player2_name + "がポイントを取った\n1か2で入力して下さい："
-        separation = "#######################################################"
-        players_count = {1: "0", 2: "15", 3: "30", 4: "40", 5: "game"}
-
-        player1_count = 1
-        player2_count = 1
-        player1_game_count = 0
-        player2_game_count = 0
+                return player1_count, player2_count
 
         def player1_point_and_game(player1_count, player1_game_count):
             player1_points = "0"
@@ -132,18 +63,59 @@ class HowToCountGame(object):
                 player2_points = players_count[1]
             return player2_points, player2_game_count
 
-        while True:
-            # ユーザーにどちらのプレイヤーがポイントを取ったか入力してもらう。
-            str_get_point = input(which_point)
-            if str_get_point == "1" or str_get_point == "2":
-                get_point = int(str_get_point)
-                if get_point == 1:
-                    player1_count += 1
-                elif get_point == 2:
-                    player2_count += 1
+        def forty_all(player1_count, player1_game_count, player2_count, player2_game_count):
+            player1_points = "0"
+            player2_points = "0"
 
-            # if player1_count % 4 == 0 and player2_count % 4 == 0:
-            #     how_to_game_count.fourty_all()
+            two_players_are_fourty_all = separation + "\n" + how_to_game_count.player1_name + ": " + "40\n" + how_to_game_count.player2_name + ": " + "40\n" + separation
+            print(two_players_are_fourty_all)
+
+            while True:
+                player1_count, player2_count = which_get_point(player1_count, player2_count)
+                dif = abs(player1_count - player2_count)
+
+                if dif == 2 and player1_count > player2_count:
+                    player1_points = players_count[5]
+                    player2_points = players_count[4]
+                    player1_game_count += 1
+                    player1_get_game = separation + "\n" + how_to_game_count.player1_name + ": " + player1_points + "\n" + how_to_game_count.player2_name + ": " + player2_points + "\n" + how_to_game_count.win_player1 + "\n" + separation
+                    print(player1_get_game)
+                    result_of_forty_all = "finish"
+                    return player1_game_count, player2_game_count, result_of_forty_all
+                elif dif == 2 and player1_count < player2_count:
+                    player1_points = players_count[4]
+                    player2_points = players_count[5]
+                    player2_game_count += 1
+                    player2_get_game = separation + "\n" + how_to_game_count.player1_name + ": " + player1_points + "\n" + how_to_game_count.player2_name + ": " + player2_points + "\n" + how_to_game_count.win_player2 + "\n" + separation
+                    print(player2_get_game)
+                    result_of_forty_all = "finish"
+                    return player1_game_count, player2_game_count, result_of_forty_all
+
+                elif player1_count == player2_count:
+                    player1_points = players_count[4]
+                    player2_points = players_count[4]
+                elif player1_count > player2_count:
+                    player1_points = "Ad"
+                    player2_points = players_count[4]
+                elif player2_count > player1_count:
+                    player1_points = players_count[4]
+                    player2_points = "Ad"
+
+                result_of_points = separation + "\n" + how_to_game_count.player1_name + ": " + player1_points + "\n" + how_to_game_count.player2_name + ": " + player2_points + "\n" + separation
+                print(result_of_points)
+
+        while True:
+            try:
+                player1_count, player2_count = which_get_point(player1_count, player2_count)
+            except TypeError:
+                print("\n※1または2で入力して下さい\n")
+
+            result_of_forty_all = "still"
+            if player1_count % 4 == 0 and player2_count % 4 == 0:
+                player1_game_count, player2_game_count, result_of_forty_all = forty_all(player1_count, player1_game_count, player2_count, player2_game_count)
+            if result_of_forty_all == "finish":
+                player1_count = 1
+                player2_count = 1
 
             player1_points, player1_game_count = player1_point_and_game(player1_count, player1_game_count)
             player2_points, player2_game_count = player2_point_and_game(player2_count, player2_game_count)
