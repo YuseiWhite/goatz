@@ -2,7 +2,7 @@ from tiebreak import SevenPointsTieBreak
 from six_games import HowToCountGame
 
 
-class EightGame(HowToCountGame):
+class EightGames(HowToCountGame):
     def __init__(self, name="8ゲームマッチ"):
         super().__init__(name)
         self.name = name

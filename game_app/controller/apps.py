@@ -1,18 +1,22 @@
-import sys
 import os
+import sys
 sys.path.append(os.path.join('..', 'models'))
 
-import tiebreak
-from tiebreak import SevenPointsTieBreak
-from tiebreak import TenPointsTieBreak
-import six_games
-from six_games import HowToCountGame
+from eight_games import EightGames
+from tiebreak import SevenPointsTieBreak, TenPointsTieBreak
+from six_games import SixGames
 
-game = SevenPointsTieBreak()
-game.seven_points_tie_break()
+"""
+どういうシステムを作るか　簡易的
+好きな試合形式で始めることができる
+"""
+
+# game = SixGames()
+# game.six_games_match()
+
+# game = SevenPointsTieBreak()
+# game.seven_points_tie_break()
 
 # game = TenPointsTieBreak()
 # game.ten_points_tie_break()
 
-# game = HowToCountGame()
-# game.game_count()
