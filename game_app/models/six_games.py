@@ -130,12 +130,12 @@ class HowToCountGame(object):
             print(result_of_points)
 
 
-class SixGame(HowToCountGame):
+class SixGames(HowToCountGame):
     def __init__(self, name="6ゲームマッチ"):
         super().__init__(name)
         self.name = name
 
-    def six_games(self):
+    def six_games_match(self):
         how_to_count_game = HowToCountGame()
         player1_game_count = 0
         player2_game_count = 0
