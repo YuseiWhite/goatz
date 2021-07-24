@@ -1,16 +1,11 @@
-"""
-タイブレークマッチについて
-
-先に7ポイントを取った方が勝利
-だだし、6-6になった場合は2ポイント差が着くまで永続的に続行する
-"""
-from match import AboutPlayers
+from game_app.models.match import AboutPlayers
 
 
 class HowToCountTieBreak(object):
     # タイブレークの加算方法
-    def __init__(self, name="タイブレークマッチ"):
-        self.name = name
+    def __init__(self, player1_name="Aさん", player2_name="Bさん"):
+        self.player1_name = player1_name
+        self.player2_name = player2_name
 
     def tie_break(self):
         about = AboutPlayers()
@@ -27,9 +22,8 @@ class SevenPointsTieBreak(HowToCountTieBreak):
     # 7ポイントのタイブレークマッチのルール
     game_name = "タイブレークマッチ"
 
-    def __init__(self, name="7ポイントタイブレークマッチ"):
-        super().__init__(name)
-        self.name = name
+    def __init__(self):
+        super().__init__()
 
     def seven_points_tie_break(self):
         about = AboutPlayers()
@@ -60,11 +54,11 @@ class TenPointsTieBreak(HowToCountTieBreak):
     # 10ポイントのタイブレークマッチのルール
     game_name = "タイブレークマッチ"
 
-    def __init__(self, name="10ポイントタイブレークマッチ"):
-        super().__init__(name)
-        self.name = name
+    def __init__(self):
+        super().__init__()
 
     def ten_points_tie_break(self):
+        about = AboutPlayers()
         how_to_count_tie_break = HowToCountTieBreak()
         while True:
             dif = abs(about.player1 - about.player2)
