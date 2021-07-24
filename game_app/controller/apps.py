@@ -7,7 +7,7 @@ from tiebreak import SevenPointsTieBreak, TenPointsTieBreak
 from six_games import SixGames
 
 """
-どういうシステムを作るか　簡易的
+どういうシステムを作るか
 好きな試合形式で始めることができる
 """
 
