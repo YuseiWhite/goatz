@@ -6,13 +6,6 @@ from game_app.models.eight_games import EightGames
 from game_app.models.tiebreak import SevenPointsTieBreak, TenPointsTieBreak
 from game_app.models.six_games import SixGames, HowToCountGame
 
-<<<<<<< HEAD
-"""
-どういうシステムを作るか
-好きな試合形式で始めることができる
-"""
-=======
->>>>>>> e20783c912068c98ce8147fd0d47b96a0195e324
 
 class StartGame(object):
     def __init__(self):
