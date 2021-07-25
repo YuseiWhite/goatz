@@ -59,20 +59,24 @@ class TenPointsTieBreak(HowToCountTieBreak):
 
     def ten_points_tie_break(self):
         about = AboutPlayers()
-        how_to_count_tie_break = HowToCountTieBreak()
         while True:
-            dif = abs(about.player1 - about.player2)
-            if dif == 2 and (about.player1 >= 11 or about.player2 >= 11):
-                break
-            elif (about.player1 == 10 or about.player2 == 10) and (about.player1 < 9 or about.player2 < 9):
-                break
-            point_of_two_players = about.about_player1_name + ": " + str(about.player1) + "\n" + about.about_player2_name + ": " + str(about.player2)
+            get_point = int(input(about.which_point))
+            if get_point == 1:
+                about.player1 += 1
+            elif get_point == 2:
+                about.player2 += 1
+
+            point_of_two_players = about.player1_name + ": " + str(about.player1) + "\n" + about.player2_name + ": " + str(about.player2)
             print("#######################################################")
             print(point_of_two_players)
             print("#######################################################")
-            how_to_count_tie_break.tie_break()
 
-        if about.player1 > about.player2:
-            print(about.about_win_player1)
-        elif about.player2 > about.player1:
-            print(about.about_win_player2)
+            dif = abs(about.player1 - about.player2)
+            if dif == 2 and (about.player1 >= 11 or about.player2 >= 11):
+                player1_tiebreak_point = about.player1
+                player2_tiebreak_point = about.player2
+                return player1_tiebreak_point, player2_tiebreak_point
+            elif (about.player1 == 10 or about.player2 == 10) and (about.player1 < 9 or about.player2 < 9):
+                player1_tiebreak_point = about.player1
+                player2_tiebreak_point = about.player2
+                return player1_tiebreak_point, player2_tiebreak_point

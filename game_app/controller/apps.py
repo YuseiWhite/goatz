@@ -19,6 +19,7 @@ class StartGame(object):
 
         separation = "#######################################################"
 
+        # 現在は名前を入力しても反映されません。
         def input_name():
             start = separation + "\n試合開始！\n" + separation
             print(start)
