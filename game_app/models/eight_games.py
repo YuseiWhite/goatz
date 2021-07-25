@@ -1,5 +1,5 @@
-from tiebreak import SevenPointsTieBreak
-from six_games import HowToCountGame
+from game_app.models.tiebreak import SevenPointsTieBreak
+from game_app.models.six_games import HowToCountGame
 
 
 class EightGames(HowToCountGame):

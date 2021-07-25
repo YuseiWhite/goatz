@@ -1,11 +1,10 @@
-from tiebreak import SevenPointsTieBreak
+from game_app.models.tiebreak import SevenPointsTieBreak
 
 
 class HowToCountGame(object):
-    def __init__(self, name="ゲームマッチ"):
-        self.name = name
-        self.player1_name = "Aさん"
-        self.player2_name = "Bさん"
+    def __init__(self, player1_name="Aさん", player2_name="Bさん"):
+        self.player1_name = player1_name
+        self.player2_name = player2_name
         self.win_player1 = "Game set and match won by " + self.player1_name + "."
         self.win_player2 = "Game set and match won by " + self.player2_name + "."
 
