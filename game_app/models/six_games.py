@@ -192,3 +192,4 @@ class SixGames(HowToCountGame):
 
             print(result_of_set_match)
             player1_game_count, player2_game_count = how_to_count_game.game_count(player1_game_count, player2_game_count)
+        return player1_game_count, player2_game_count, player1_tiebreak_point, player2_tiebreak_point
