@@ -1,5 +1,5 @@
-from game_app.models.match import AboutPlayers
-
+# from game_app.models.match import AboutPlayers
+from match import AboutPlayers
 
 class HowToCountTieBreak(object):
     # タイブレークの加算方法
