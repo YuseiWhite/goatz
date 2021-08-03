@@ -1,5 +1,4 @@
-# from game_app.models.tiebreak import SevenPointsTieBreak
-from tiebreak import SevenPointsTieBreak
+from game_app.models.tiebreak import SevenPointsTieBreak
 
 
 class HowToCountGame(object):
@@ -166,10 +165,10 @@ class SixGames(HowToCountGame):
 
         def result_of_tiebreak_match(player1_tiebreak_point, player2_tiebreak_point):
             if player1_tiebreak_point > player2_tiebreak_point:
-                player1_win_tiebreak_match = separation + "\n" + how_to_count_game.player1_name + ": 7" + "\n" + how_to_count_game.player2_name + ": 6(" + str(player2_tiebreak_point) + ")\n" + separation
+                player1_win_tiebreak_match = separation + "\n" + how_to_count_game.win_player1 + "\n" + how_to_count_game.player1_name + ": 7" + "\n" + how_to_count_game.player2_name + ": 6(" + str(player2_tiebreak_point) + ")\n" + separation
                 print(player1_win_tiebreak_match)
             elif player1_tiebreak_point < player2_tiebreak_point:
-                player2_win_tiebreak_match = separation + "\n" + how_to_count_game.player1_name + ": 6(" + str(player1_tiebreak_point) + ")\n" + how_to_count_game.player2_name + ": 7\n" + separation
+                player2_win_tiebreak_match = separation + "\n" + how_to_count_game.win_player2 + "\n" + how_to_count_game.player1_name + ": 6(" + str(player1_tiebreak_point) + ")\n" + how_to_count_game.player2_name + ": 7\n" + separation
                 print(player2_win_tiebreak_match)
 
         while True:
