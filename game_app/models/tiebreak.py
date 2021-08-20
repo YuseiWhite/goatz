@@ -1,6 +1,7 @@
 # from game_app.models.match import AboutPlayers
 from match import AboutPlayers
 
+
 class HowToCountTieBreak(object):
     # タイブレークの加算方法
     def __init__(self, player1_name="Aさん", player2_name="Bさん"):
