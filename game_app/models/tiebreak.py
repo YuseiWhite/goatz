@@ -1,5 +1,6 @@
-# from game_app.models.match import AboutPlayers
-from match import AboutPlayers
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from game_app.models.match import AboutPlayers
 
 
 class HowToCountTieBreak(object):

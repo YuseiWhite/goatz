@@ -1,5 +1,6 @@
-# from game_app.models.tiebreak import SevenPointsTieBreak
-from tiebreak import SevenPointsTieBreak
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from game_app.models.tiebreak import SevenPointsTieBreak
 
 
 class HowToCountGame(object):

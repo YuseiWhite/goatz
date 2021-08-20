@@ -1,6 +1,6 @@
-# from game_app.models.six_games import SixGames
-
-from six_games import SixGames
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from game_app.models.six_games import SixGames
 
 
 class ThreeSets(object):
