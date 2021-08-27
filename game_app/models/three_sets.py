@@ -16,7 +16,7 @@ class ThreeSets(object):
         player1_get_set_call = None
         player2_get_set_call = None
 
-        player1_game_count, player2_game_count, player1_tiebreak_point, player2_tiebreak_point = six_game.six_games_match()
+        player1_game_count, player2_game_count, player1_tiebreak_point, player2_tiebreak_point = six_game.run_six_games_match()
 
         if player1_game_count == player2_game_count:
             if player1_tiebreak_point > player2_tiebreak_point:

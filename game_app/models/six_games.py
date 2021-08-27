@@ -151,7 +151,7 @@ class SixGames(object):
             if player1_game_count == 6 and player2_game_count == 6:
                 start_tiebreak_match = "\n6 game all, Tie-Break\n"
                 print(start_tiebreak_match)
-                player1_tiebreak_point, player2_tiebreak_point = tiebreak.seven_points_tie_break
+                player1_tiebreak_point, player2_tiebreak_point = tiebreak.run_seven_points_tie_break()
                 result_of_tiebreak = "finish"
                 return player1_game_count, player2_game_count, player1_tiebreak_point, player2_tiebreak_point, result_of_tiebreak
             # タイブレークに突入しなくてもタイブレークポイントを0で返す。
