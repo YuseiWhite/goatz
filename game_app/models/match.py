@@ -7,9 +7,3 @@ class AboutPlayers(object):
     player2 = 0
     win_player1 = "Game set and match won by " + player1_name + "."
     win_player2 = "Game set and match won by " + player2_name + "."
-    # ゲームマッチで使用
-    player1_count = 1
-    player2_count = 1
-    players_count = {1: "0", 2: "15", 3: "30", 4: "40", 5: "game"}
-    player1_game_count = 0
-    player2_game_count = 0

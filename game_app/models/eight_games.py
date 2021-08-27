@@ -26,7 +26,7 @@ class EightGames(HowToCountGame):
                 if player1_game_count == 8 and player2_game_count == 8:
                     start_tiebreak_match = "\n6 game all, Tie-Break\n"
                     print(start_tiebreak_match)
-                    player1_tiebreak_point, player2_tiebreak_point = tiebreak.seven_points_tie_break()
+                    player1_tiebreak_point, player2_tiebreak_point = tiebreak.seven_points_tie_break
                     result_of_tiebreak = "finish"
                     return player1_game_count, player2_game_count, player1_tiebreak_point, player2_tiebreak_point, result_of_tiebreak
                 elif player1_game_count == 9 or player2_game_count == 9:

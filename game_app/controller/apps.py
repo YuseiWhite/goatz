@@ -54,7 +54,7 @@ class StartGame(object):
         elif select_game_format == 2:
             eight_games.eight_games_match()
         elif select_game_format == 3:
-            tiebreak.seven_points_tie_break()
+            tiebreak.seven_points_tie_break
         elif select_game_format == 4:
             super_tiebreak.ten_points_tie_break()
 
