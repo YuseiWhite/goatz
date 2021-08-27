@@ -29,6 +29,7 @@ class SevenPointsTieBreak(HowToCountTieBreak):
 
     def seven_points_tie_break(self):
         about = AboutPlayers()
+        separation = "#" * 55
         while True:
             get_point = int(input(about.which_point))
             if get_point == 1:
@@ -36,10 +37,8 @@ class SevenPointsTieBreak(HowToCountTieBreak):
             elif get_point == 2:
                 about.player2 += 1
 
-            point_of_two_players = about.player1_name + ": " + str(about.player1) + "\n" + about.player2_name + ": " + str(about.player2)
-            print("#######################################################")
+            point_of_two_players = separation + "\n【Tie-break】\n" + about.player1_name + ": " + str(about.player1) + "\n" + about.player2_name + ": " + str(about.player2) + "\n" + separation
             print(point_of_two_players)
-            print("#######################################################")
 
             dif = abs(about.player1 - about.player2)
             if dif == 2 and (about.player1 >= 8 or about.player2 >= 8):
