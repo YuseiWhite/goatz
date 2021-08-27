@@ -8,7 +8,7 @@ class ThreeSets(object):
         self.player1_name = player1_name
         self.player2_name = player2_name
 
-    def set_count_system(self, set_count="first"):
+    def which_player_set_got_is(self, set_count):
         six_game = SixGames()
         separation = "#" * 55
         player1_get_set = "lose"
@@ -46,20 +46,20 @@ class ThreeSets(object):
         count_player1_set = 0
         count_player2_set = 0
 
-        player1_get_first_set, player2_get_first_set = self.set_count_system("first")
+        player1_get_first_set, player2_get_first_set = self.which_player_set_got_is("first")
         if player1_get_first_set == "win":
             count_player1_set += 1
         elif player2_get_first_set == "win":
             count_player2_set += 1
 
-        player1_get_second_set, player2_get_second_set = self.set_count_system("second")
+        player1_get_second_set, player2_get_second_set = self.which_player_set_got_is("second")
         if player1_get_second_set == "win":
             count_player1_set += 1
         elif player2_get_second_set == "win":
             count_player2_set += 1
 
         if count_player1_set == 1 and count_player2_set == 1:
-            player1_get_third_set, player2_get_third_set = self.set_count_system("third")
+            player1_get_third_set, player2_get_third_set = self.which_player_set_got_is("third")
             if player1_get_third_set == "win":
                 count_player1_set += 1
             elif player2_get_third_set == "win":
@@ -78,7 +78,7 @@ class ThreeSets(object):
                 win_three_sets_match = separation + "\nGame and set match " + self.player2_name + ".\n"
             return result, win_three_sets_match
 
-    def three_sets_match(self):
+    def run_three_sets_match(self):
         result, win_three_sets_match = self.three_set_match_result()
         if win_three_sets_match is not None:
             print(win_three_sets_match + result)
