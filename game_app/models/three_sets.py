@@ -25,7 +25,7 @@ class ThreeSets(object):
                     player2_game_count) + "(" + str(player2_tiebreak_point) + ")\n" + separation
             elif player2_tiebreak_point > player1_tiebreak_point:
                 player2_get_set = "win"
-                player2_get_set_call = separation + f"\nGame and {set_count} " + self.player2_name + " 7-" + str(
+                player2_get_set_call = separation + f"\nGame and {set_count} set" + self.player2_name + " 7-" + str(
                     player1_game_count) + "(" + str(player1_tiebreak_point) + ")\n" + separation
         elif player1_game_count > player2_game_count:
             player1_get_set = "win"
@@ -71,7 +71,7 @@ class ThreeSets(object):
         win_three_sets_match = None
         count_player1_set, count_player2_set = self.control_set_count()
         if count_player1_set == 2 or count_player2_set == 2:
-            result = self.player1_name + ": " + str(count_player1_set) + "\n" + self.player2_name + ": " + str(count_player2_set) + "\n" + separation
+            result = "【Sets】\n" + self.player1_name + ": " + str(count_player1_set) + "\n" + self.player2_name + ": " + str(count_player2_set) + "\n" + separation
             if count_player1_set > count_player2_set:
                 win_three_sets_match = separation + "\nGame and set match " + self.player1_name + ".\n"
             elif count_player1_set < count_player2_set:

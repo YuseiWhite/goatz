@@ -18,9 +18,9 @@ class StartGame(object):
         separation = "#" * 55
         start = separation + "\n試合開始！\n" + separation
         print(start)
-        player1_name = input("あなたの名前を入力して下さい：")
+        player1_name = input(u"あなたの名前を入力して下さい：")
         player1_name = player1_name + "さん"
-        player2_name = input("相手の名前を入力して下さい：")
+        player2_name = input(u"相手の名前を入力して下さい：")
         player2_name = player2_name + "さん"
         return player1_name, player2_name
 
