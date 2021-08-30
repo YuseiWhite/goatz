@@ -9,7 +9,7 @@ class ThreeSets(object):
         self.player2_name = player2_name
 
     def which_player_set_got_is(self, set_count):
-        six_game = SixGames()
+        six_game = SixGames(self.player1_name, self.player2_name)
         separation = "#" * 55
         player1_get_set = "lose"
         player2_get_set = "lose"

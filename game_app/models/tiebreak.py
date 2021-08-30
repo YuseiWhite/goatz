@@ -30,7 +30,7 @@ class SevenPointsTieBreak(object):
             count_player1, count_player2 = self.which_player_point_acquired_is(count_player1, count_player2)
             point_of_two_players = "【Tie-break】\n" + self.player1_name + ": " + str(count_player1) \
                                    + "\n" + self.player2_name + ": " + str(count_player2)
-            popup(point_of_two_players)
+            popup(point_of_two_players, size='large')
 
             dif = abs(count_player1 - count_player2)
             if dif == 2 and (count_player1 >= 8 or count_player2 >= 8):
@@ -70,7 +70,7 @@ class TenPointsTieBreak(SevenPointsTieBreak):
             count_player1, count_player2 = self.which_player_point_acquired_is(count_player1, count_player2)
             point_of_two_players = "【Tie-break】\n" + self.player1_name + ": " + str(count_player1) \
                                    + "\n" + self.player2_name + ": " + str(count_player2)
-            popup(point_of_two_players)
+            popup(point_of_two_players, size='large')
 
             dif = abs(count_player1 - count_player2)
             if dif == 2 and (count_player1 >= 11 or count_player2 >= 11):
