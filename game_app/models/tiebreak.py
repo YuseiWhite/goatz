@@ -95,4 +95,3 @@ class TenPointsTieBreak(SevenPointsTieBreak):
                                          + "\n" + self.player2_name + ": " + str(player2_tiebreak_point) + "\n" \
                                          + self.win_player2
             put_text(player2_win_tiebreak_match)
-        hold()
