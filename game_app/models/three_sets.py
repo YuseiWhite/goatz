@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+from pywebio.input import input, TEXT, NUMBER, select, checkbox, radio, textarea, file_upload, input_group
+from pywebio.output import put_text, put_buttons, put_link, put_markdown, put_table, put_image, popup
+from pywebio.session import hold
+
 from game_app.models.six_games import SixGames
 
 
@@ -10,7 +14,6 @@ class ThreeSets(object):
 
     def which_player_set_got_is(self, set_count):
         six_game = SixGames(self.player1_name, self.player2_name)
-        separation = "#" * 55
         player1_get_set = "lose"
         player2_get_set = "lose"
         player1_get_set_call = None
@@ -21,25 +24,25 @@ class ThreeSets(object):
         if player1_game_count == player2_game_count:
             if player1_tiebreak_point > player2_tiebreak_point:
                 player1_get_set = "win"
-                player1_get_set_call = separation + f"\nGame and {set_count} set " + self.player1_name + " 7-" + str(
-                    player2_game_count) + "(" + str(player2_tiebreak_point) + ")\n" + separation
+                player1_get_set_call = f"Game and {set_count} set " + self.player1_name + " 7-" \
+                                       + str(player2_game_count) + "(" + str(player2_tiebreak_point) + ")"
             elif player2_tiebreak_point > player1_tiebreak_point:
                 player2_get_set = "win"
-                player2_get_set_call = separation + f"\nGame and {set_count} set" + self.player2_name + " 7-" + str(
-                    player1_game_count) + "(" + str(player1_tiebreak_point) + ")\n" + separation
+                player2_get_set_call = f"Game and {set_count} set " + self.player2_name + " 7-" \
+                                       + str(player1_game_count) + "(" + str(player1_tiebreak_point) + ")"
         elif player1_game_count > player2_game_count:
             player1_get_set = "win"
-            player1_get_set_call = separation + f"\nGame and {set_count} set " + self.player1_name + " " + str(
-                player1_game_count) + "-" + str(player2_game_count) + "\n" + separation
+            player1_get_set_call = f"Game and {set_count} set " + self.player1_name + " " \
+                                   + str(player1_game_count) + "-" + str(player2_game_count)
         elif player2_game_count > player1_game_count:
             player2_get_set = "win"
-            player2_get_set_call = separation + f"\nGame and {set_count} set " + self.player2_name + " " + str(
-                player2_game_count) + "-" + str(player1_game_count) + "\n" + separation
+            player2_get_set_call = f"Game and {set_count} set " + self.player2_name + " " \
+                                   + str(player2_game_count) + "-" + str(player1_game_count)
 
         if player1_get_set_call is not None:
-            print(player1_get_set_call)
+            put_text(player1_get_set_call)
         elif player2_get_set_call is not None:
-            print(player2_get_set_call)
+            put_text(player2_get_set_call)
         return player1_get_set, player2_get_set
 
     def control_set_count(self):
@@ -67,18 +70,17 @@ class ThreeSets(object):
         return count_player1_set, count_player2_set
 
     def three_set_match_result(self):
-        separation = "#" * 55
         win_three_sets_match = None
         count_player1_set, count_player2_set = self.control_set_count()
         if count_player1_set == 2 or count_player2_set == 2:
-            result = "【Sets】\n" + self.player1_name + ": " + str(count_player1_set) + "\n" + self.player2_name + ": " + str(count_player2_set) + "\n" + separation
+            result = "【Sets】\n" + self.player1_name + ": " + str(count_player1_set) + "\n" + self.player2_name + ": " + str(count_player2_set)
             if count_player1_set > count_player2_set:
-                win_three_sets_match = separation + "\nGame and set match " + self.player1_name + ".\n"
+                win_three_sets_match = "Game and set match " + self.player1_name + ".\n"
             elif count_player1_set < count_player2_set:
-                win_three_sets_match = separation + "\nGame and set match " + self.player2_name + ".\n"
+                win_three_sets_match = "Game and set match " + self.player2_name + ".\n"
             return result, win_three_sets_match
 
     def run_three_sets_match(self):
         result, win_three_sets_match = self.three_set_match_result()
         if win_three_sets_match is not None:
-            print(win_three_sets_match + result)
+            put_text(win_three_sets_match + result)

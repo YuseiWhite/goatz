@@ -30,10 +30,16 @@ class StartGame(object):
         start = "テニスカウントアプリケーション「Goatz」へようこそ！\nさあ、試合開始です！\nテニスを楽しみましょう！"
         put_text(start)
         player1_name = input("あなたの名前を入力して下さい：", type=TEXT, required=True)
-        player1_name = player1_name + "さん"
         player2_name = input("相手の名前を入力して下さい：", type=TEXT, required=True)
-        player2_name = player2_name + "さん"
         return player1_name, player2_name
+
+    def input_whether_to_play_again(self):
+        more_game = False
+        play_again = "もう一度試合を行いますか？"
+        input_play_again = radio(play_again, options=["はい", "いいえ"])
+        if input_play_again == "はい":
+            more_game = True
+        return more_game
 
     def select_game_format(self):
         while True:
@@ -73,22 +79,19 @@ class StartGame(object):
             if game_format_num == 1:
                 six_games = SixGames(player1_name, player2_name)
                 six_games.run_six_games_match()
-                hold()
             elif game_format_num == 2:
                 eight_games = EightGames(player1_name, player2_name)
                 eight_games.run_eight_games_match()
-                hold()
             elif game_format_num == 3:
                 tiebreak = SevenPointsTieBreak(player1_name, player2_name)
                 tiebreak.seven_points_tie_break_result()
-                hold()
             elif game_format_num == 4:
                 super_tiebreak = TenPointsTieBreak(player1_name, player2_name)
                 super_tiebreak.ten_points_tie_break_result()
-                hold()
             elif game_format_num == 5:
                 three_sets = ThreeSets(player1_name, player2_name)
                 three_sets.run_three_sets_match()
-                hold()
+        more_game = self.input_whether_to_play_again()
+        return more_game
 
 

@@ -8,10 +8,11 @@ from game_app.controller.apps import StartGame
 
 def main():
     app = StartGame()
-    app.start_game()
-    start_server(main, port=8000)
-    hold()
+    more_game = app.start_game()
+
+    while more_game:
+        more_game = app.start_game()
 
 
 if __name__ == '__main__':
-    main()
+    start_server(main, port=9200)
