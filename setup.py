@@ -7,7 +7,7 @@ except ImportError:
 
 
 setup(
-    name='tennis_count_app',
+    name='goatz',
     version='0.0.1',
     packages=['game_app', 'game_app.models', 'game_app.controller', 'game_app.views'],
     # You could use find_packages if setuptools is installed.
@@ -19,5 +19,5 @@ setup(
     author_email='example@example.com',
     # You can specify install_requires if setuptools is installed
     # install_requires=['termcolor==1.1.0'],
-    long_description=open('README.txt').read(),
+    long_description=open('README.md').read(),
 )
