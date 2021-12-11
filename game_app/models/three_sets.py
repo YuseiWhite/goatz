@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from pywebio.input import input, TEXT, NUMBER, select, checkbox, radio, textarea, file_upload, input_group
-from pywebio.output import put_text, put_buttons, put_link, put_markdown, put_table, put_image, popup
-from pywebio.session import hold
+from pywebio.output import put_text
 
 from game_app.models.six_games import SixGames
 

@@ -5,8 +5,8 @@ import sys
 sys.path.append(os.path.join('..', 'models'))
 import json
 
-from pywebio.input import input, TEXT, NUMBER, select, checkbox, radio, textarea, file_upload, input_group
-from pywebio.output import put_text, put_buttons, put_link, put_markdown, put_table, put_image, popup, toast
+from pywebio.input import input, TEXT, select, radio
+from pywebio.output import put_text, popup, toast
 from pywebio.session import hold
 
 from game_app.models.eight_games import EightGames
